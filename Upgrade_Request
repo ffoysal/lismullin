@@ -1,0 +1,14 @@
+Sep 18, 2015
+
+Upgrade Requirement:
+We are going to implement the 'prevent overbooking' functionality is a simpler way:
+I have created a new checkbox field for Course-Event in Sandbox called "Fully Booked".
+When this field is ticked (by manual intervention rather than by a calculated field) then the website List of Courses should replace the "Book Now" link with "Not Available" and display an "i" message: "This course is now fully booked. Ring the Lismullin Office for further information".
+
+File List:
+	soapclient/sfclient.php
+	soapclient/course.php
+	views/courses/tmpl/default.php
+	views/courses/view.html.php
+	assets/css/salesforce.css
+	
