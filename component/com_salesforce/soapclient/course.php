@@ -12,7 +12,8 @@ class Course{
     protected $location = null;
     protected $extID;
     protected $type;
-    public function __construct($t=null,$c=null,$sd=null,$fd=null,$ve=null,$pr=null,$oap=null,$des=null,$id=null, $ext=null,$tpe=null){
+    protected $fullyBooked;
+    public function __construct($t=null,$c=null,$sd=null,$fd=null,$ve=null,$pr=null,$oap=null,$des=null,$id=null, $ext=null,$tpe=null,$fb=null){
         $this->title = $t;
         $this->code = $c;
         $this->startDate = $sd;
@@ -26,7 +27,8 @@ class Course{
         $this->description = $des;
         $this->Id = $id;
         $this->extID = $ext;
-		$this->type=$tpe;
+				$this->type=$tpe;
+			 $this->fullyBooked = $fb;
     }
     public function getLocation(){
         return $this->location;
@@ -83,7 +85,7 @@ class Course{
         $today = new DateTime();
         $today->sub(new DateInterval('P2D'));
         $sd = new DateTime($this->startDate);
-        if($sd < $today || $this->type === 'Annual Course')
+        if($sd < $today || $this->type === 'Annual Course' || $this->isFullyBooked())
             return false;
         
         return true;
@@ -102,7 +104,22 @@ class Course{
         return false;
 	}
 		
-	public function getType(){
+		public function getType(){
 		return $this->type;
-	}	
+		}	
+
+    public function isFullyBooked()
+    {
+        if (isset($this->fullyBooked))
+            return $this->fullyBooked;
+        
+        return false;
+    }
+    public function showFullyBookedText()
+    {
+        if($this->showStartedCourseText() || $this->showAnualText() || $this->isValid())
+            return false;
+        return true;
+
+    }
 }
