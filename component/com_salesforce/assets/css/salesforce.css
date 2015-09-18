@@ -62,3 +62,9 @@ td.lbl{
 	font-size: small;
 	font-family: -webkit-body;
 }
+.notclick{	
+	color: #B38F00;
+}
+.anual-info{
+	color: #B38F00 !important;
+}

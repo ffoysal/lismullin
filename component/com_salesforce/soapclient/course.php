@@ -11,8 +11,8 @@ class Course{
     protected $Id;
     protected $location = null;
     protected $extID;
-    
-    public function __construct($t=null,$c=null,$sd=null,$fd=null,$ve=null,$pr=null,$oap=null,$des=null,$id=null, $ext=null){
+    protected $type;
+    public function __construct($t=null,$c=null,$sd=null,$fd=null,$ve=null,$pr=null,$oap=null,$des=null,$id=null, $ext=null,$tpe=null){
         $this->title = $t;
         $this->code = $c;
         $this->startDate = $sd;
@@ -26,6 +26,7 @@ class Course{
         $this->description = $des;
         $this->Id = $id;
         $this->extID = $ext;
+		$this->type=$tpe;
     }
     public function getLocation(){
         return $this->location;
@@ -82,10 +83,26 @@ class Course{
         $today = new DateTime();
         $today->sub(new DateInterval('P2D'));
         $sd = new DateTime($this->startDate);
-        if($sd < $today)
+        if($sd < $today || $this->type === 'Annual Course')
             return false;
         
         return true;
         
     }
+	public function showAnualText(){
+		return $this->type === 'Annual Course';
+	}
+	public function showStartedCourseText(){
+		$today = new DateTime();
+        $today->sub(new DateInterval('P2D'));
+        $sd = new DateTime($this->startDate);
+        if($sd < $today && $this->type !== 'Annual Course')
+            return true;
+        
+        return false;
+	}
+		
+	public function getType(){
+		return $this->type;
+	}	
 }

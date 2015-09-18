@@ -36,7 +36,7 @@ class SFCourse{
 		$this->mySforceConnection->login($params->get('salesforce_email'), $params->get('salesforce_password').$params->get('salesforce_security_token'));
 	}
     public function getCourses(){
-		$query = "SELECT Id, Name, Start_Date__c, Finish_Date__c, Price__c, Venue__c, Course_External_ID__c, RefCouse_Event__c, Price_OAP_Student__c, Description__c from Course_Event__c WHERE Display_on_website__c='Yes'";
+		$query = "SELECT Id, Name, Type__c, Start_Date__c, Finish_Date__c, Price__c, Venue__c, Course_External_ID__c, RefCouse_Event__c, Price_OAP_Student__c, Description__c from Course_Event__c WHERE Display_on_website__c='Yes'";
 		$response = $this->mySforceConnection->query($query);
 	
 		$sfCourses = array();
@@ -45,7 +45,7 @@ class SFCourse{
 		foreach ($response->records as $record) {
 			$mycourse = new Course($record->Name,$record->RefCouse_Event__c,$record->Start_Date__c, $record->Finish_Date__c,
 								   $this->getVenue($record->Venue__c),$record->Price__c,
-								   $record->Price_OAP_Student__c,$record->Description__c, $record->Id, $record->Course_External_ID__c);
+								   $record->Price_OAP_Student__c,$record->Description__c, $record->Id, $record->Course_External_ID__c,$record->Type__c);
 								//echo 'Testing.. '.$record->Price_OAP_Student__c;
 								
 			$sfCourses[$recordCounter] = $mycourse;

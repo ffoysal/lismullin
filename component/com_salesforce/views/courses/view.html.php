@@ -25,7 +25,8 @@ class SalesforceViewCourses extends JView{
         foreach ($sfcourses as $cor) {
             $arr = array('code' => $cor->getCode(),'title'=>$cor->getTitle(),'startDate'=>$cor->getStartDate(),
 						 'finishDate'=>$cor->getFinishDate(),'location'=>$cor->getLocation(),'price'=>$cor->getPrice(),
-						 'book'=>'Book Now','oapPrice'=>$cor->getOapPrice(),'description'=>$cor->getDescription(),'Id'=>$cor->getId(),'bookable'=>$cor->isValid());
+						 'book'=>'Book Now','oapPrice'=>$cor->getOapPrice(),'description'=>$cor->getDescription(),'Id'=>$cor->getId(),
+						 'bookable'=>$cor->isValid(),'showAnualText'=>$cor->showAnualText(),'showStartedCourseText'=>$cor->showStartedCourseText());
             $jsarr[$c++] = $arr;
         }
 

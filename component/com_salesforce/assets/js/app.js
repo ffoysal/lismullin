@@ -9,6 +9,10 @@ app.controller('courseMainController', function($scope) {
   // create the list of sushi rolls
   //The sfc variable injected by php view.html.php file
   $scope.courses = sfc;
+  angular.forEach($scope.courses, function(cor){
+	cor.startDate = new Date(cor.startDate);
+	cor.finishDate = new Date(cor.finishDate);
+  });  
   /*$scope.sushi = [
     { code: 'Code 1', title: 'Tittle 1', startDate: 'Start Date 1', finishDate: 'Finish Date 1', price: 'PRice 1', book: 'Book 1',location: c1["code"] },
     { code: 'Code 1', title: 'Tittle 1', startDate: 'Start Date 1', finishDate: 'Finish Date 1', price: 'PRice 1', book: 'Book 1' ,location: 'location 1'},

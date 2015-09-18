@@ -17,12 +17,8 @@ defined('_JEXEC') or die('Restricted access');
 		<table class="table table-bordered table-striped">
 			<thead>
 				<tr>
-					<th >
-						<a  class="sortable-a" ng-click="sortType = 'code'; sortReverse = !sortReverse">
+					<th class="notclick">						
             				Code
-            				<span ng-show="sortType == 'code'  && !sortReverse" class="fa fa-caret-down"></span>
-            				<span ng-show="sortType == 'code'  && sortReverse" class="fa fa-caret-up"></span>
-          				</a>
           			</th>
 					<th >
 						<a  class="sortable-a" ng-click="sortType = 'title'; sortReverse = !sortReverse">
@@ -38,20 +34,15 @@ defined('_JEXEC') or die('Restricted access');
             			<span ng-show="sortType == 'startDate'  && sortReverse" class="fa fa-caret-up"></span>
           				</a>
 					</th>
-					<th >
+					<th nowrap>
 						<a  class="sortable-a" ng-click="sortType = 'finishDate'; sortReverse = !sortReverse">
             				Finish Date
           				<span ng-show="sortType == 'finishDate'  && !sortReverse" class="fa fa-caret-down"></span>
             			<span ng-show="sortType == 'finishDate'  && sortReverse" class="fa fa-caret-up"></span>
           				</a>
 					</th>				
-					<th >
-						<a class="sortable-a" ng-click="sortType = 'location'; sortReverse = !sortReverse">
+					<th class="notclick">						
             				Location
-          				<span ng-show="sortType == 'location'  && !sortReverse" class="fa fa-caret-down"></span>
-            			<span ng-show="sortType == 'location'  && sortReverse" class="fa fa-caret-up"></span>
-
-          				</a>
 					</th>				
 					<th>
 						<a  class="sortable-a" ng-click="sortType = 'price'; sortReverse = !sortReverse">
@@ -64,11 +55,11 @@ defined('_JEXEC') or die('Restricted access');
 				</tr>
 			</thead>
 			<tbody>				
-				<tr class="sectiontableentry" ng-repeat="cor in courses | filter:search |orderBy:sortTtype:sortReverse">
+				<tr class="sectiontableentry" ng-repeat="cor in courses | filter:search |orderBy:sortType:sortReverse">
 				  <td >{{cor.code}}</td>
 				  <td >{{cor.title}}</td>
-				  <td nowrap>{{cor.startDate}}</td>
-				  <td nowrap>{{cor.finishDate}}</td>
+				  <td nowrap>{{cor.startDate |date:'dd MMM yyyy'}}</td>
+				  <td nowrap>{{cor.finishDate |date:'dd MMM yyyy'}}</td>
 				  <td >{{cor.location}}</td>
 			  	  <td >{{cor.price | currency:"&euro;"}}  Per Attendee
 				  <i ng-show='{{cor.oapPrice != "0.00"}}' class="fa fa-info-circle" title='Price for OAP/Student {{cor.oapPrice | currency:"&euro;"}}'></i>
@@ -76,7 +67,8 @@ defined('_JEXEC') or die('Restricted access');
 				  </td>
 				  <td nowrap>
 					<a ng-show="{{cor.bookable}}" href="index.php?option=com_salesforce&view=sfbooking&courseid={{cor.Id}}" ng-click="showBooking=true;showList=false;">{{cor.book}}</a>
-					<span ng-show="{{! cor.bookable}}">Not Available</span>  <i ng-show='{{! cor.bookable}}' class="fa fa-info-circle" title='This Course/Seminar has already started. You cannot make a booking on line. Please contact the Lismullin Office.'></i>
+					<span ng-show="{{cor.showStartedCourseText}}">Not Available</span>  <i ng-show='{{ cor.showStartedCourseText}}' class="fa fa-info-circle anual-info" title='This Course/Seminar has already started. You cannot make a booking on line. Please contact the Lismullin Office.'></i>
+					<span ng-show="{{cor.showAnualText}}">Not Available</span>  <i ng-show='{{cor.showAnualText}}' class="fa fa-info-circle" title='Please contact the Lismullin Office to book a place for this course.'></i>
 				</td>
 			  </tr>				
 			</tbody>
