@@ -3,14 +3,14 @@
 //ini_set('display_errors',1);
 defined('_JEXEC') or die('Access Deny');
 /*
-define("USERNAME", "foysal.iqbal@gmail.com"); // need to replace with production email
-define("PASSWORD", "lismullin15"); //need to replace with production pass
-define("SECURITY_TOKEN", "9WEMkp6pAGw0Z8mfluRCh1uVl"); //need to replace production security tocken
+define("USERNAME", "XXXXXXXX"); // need to replace with production email
+define("PASSWORD", "XXXXXXXX"); //need to replace with production pass
+define("SECURITY_TOKEN", "XXXXXXXX"); //need to replace production security tocken
 */
 /*
-define("USERNAME", "lismullinwebsite@gmail.com"); // need to replace with production email
-define("PASSWORD", "44_Westland"); //need to replace with production pass
-define("SECURITY_TOKEN", "WXQLLMQuVIZNcC3XfuMQXhUC"); //need to replace production security tocken
+define("USERNAME", "XXXXXXXX"); // need to replace with production email
+define("PASSWORD", "XXXXXXXX"); //need to replace with production pass
+define("SECURITY_TOKEN", "XXXXXXXX"); //need to replace production security tocken
 */
 //require_once ('SforcePartnerClient.php');
 require_once ('SforceEnterpriseClient.php');
