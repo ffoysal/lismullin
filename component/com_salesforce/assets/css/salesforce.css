@@ -71,3 +71,7 @@ td.lbl{
 .fully-booked-info{
 	color: #449d44 !important;	
 }
+
+.status-cancelled-info{
+	color: #5E449F !important;
+}

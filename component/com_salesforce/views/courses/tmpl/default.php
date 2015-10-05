@@ -70,6 +70,7 @@ defined('_JEXEC') or die('Restricted access');
 					<span ng-show="{{cor.showStartedCourseText}}">Not Available</span>  <i ng-show='{{ cor.showStartedCourseText}}' class="fa fa-info-circle anual-info" title='This Course/Seminar has already started. You cannot make a booking on line. Please contact the Lismullin Office.'></i>
 					<span ng-show="{{cor.showAnualText}}">Not Available</span>  <i ng-show='{{cor.showAnualText}}' class="fa fa-info-circle" title='Please contact the Lismullin Office to book a place for this course.'></i>
 <span ng-show="{{cor.showFullyBookedText}}">Not Available</span>  <i ng-show='{{cor.showFullyBookedText}}' class="fa fa-info-circle fully-booked-info" title='This course is now fully booked. Please contact the Lismullin Office for further information.'></i>
+<span ng-show="{{cor.showStatusCancelledText}}">Not Available</span>  <i ng-show='{{cor.showStatusCancelledText}}' class="fa fa-info-circle status-cancelled-info" title='This course has been cancelled. Please contact the Lismullin Office for more information.'></i>
 				</td>
 			  </tr>				
 			</tbody>

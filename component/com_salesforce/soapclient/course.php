@@ -13,7 +13,8 @@ class Course{
     protected $extID;
     protected $type;
     protected $fullyBooked;
-    public function __construct($t=null,$c=null,$sd=null,$fd=null,$ve=null,$pr=null,$oap=null,$des=null,$id=null, $ext=null,$tpe=null,$fb=null){
+		protected $status;
+    public function __construct($t=null,$c=null,$sd=null,$fd=null,$ve=null,$pr=null,$oap=null,$des=null,$id=null, $ext=null,$tpe=null,$fb=null,$sta=null){
         $this->title = $t;
         $this->code = $c;
         $this->startDate = $sd;
@@ -28,7 +29,8 @@ class Course{
         $this->Id = $id;
         $this->extID = $ext;
 				$this->type=$tpe;
-			 $this->fullyBooked = $fb;
+			 	$this->fullyBooked = $fb;
+				$this->status = $sta;
     }
     public function getLocation(){
         return $this->location;
@@ -85,20 +87,20 @@ class Course{
         $today = new DateTime();
         $today->sub(new DateInterval('P2D'));
         $sd = new DateTime($this->startDate);
-        if($sd < $today || $this->type === 'Annual Course' || $this->isFullyBooked())
+        if($sd < $today || $this->type === 'Annual Course' || $this->isFullyBooked() || $this->status ==='Cancelled')
             return false;
         
         return true;
         
     }
 	public function showAnualText(){
-		return $this->type === 'Annual Course';
+		return $this->type === 'Annual Course' && $this->status ==='Active';
 	}
 	public function showStartedCourseText(){
 		$today = new DateTime();
         $today->sub(new DateInterval('P2D'));
         $sd = new DateTime($this->startDate);
-        if($sd < $today && $this->type !== 'Annual Course')
+        if($sd < $today && $this->type !== 'Annual Course' && $this->status ==='Active')
             return true;
         
         return false;
@@ -117,9 +119,16 @@ class Course{
     }
     public function showFullyBookedText()
     {
-        if($this->showStartedCourseText() || $this->showAnualText() || $this->isValid())
+        if($this->showStartedCourseText() || $this->showAnualText() || $this->isValid() || $this->status ==='Cancelled')
             return false;
         return true;
+
+    }
+    public function showStatusCancelledText()
+    {
+        if($this->status ==='Cancelled')
+            return true;
+        return false;
 
     }
 }

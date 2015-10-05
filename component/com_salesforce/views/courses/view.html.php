@@ -26,7 +26,8 @@ class SalesforceViewCourses extends JView{
             $arr = array('code' => $cor->getCode(),'title'=>$cor->getTitle(),'startDate'=>$cor->getStartDate(),
 						 'finishDate'=>$cor->getFinishDate(),'location'=>$cor->getLocation(),'price'=>$cor->getPrice(),
 						 'book'=>'Book Now','oapPrice'=>$cor->getOapPrice(),'description'=>$cor->getDescription(),'Id'=>$cor->getId(),
-						 'bookable'=>$cor->isValid(),'showAnualText'=>$cor->showAnualText(),'showStartedCourseText'=>$cor->showStartedCourseText(),'showFullyBookedText'=>$cor->showFullyBookedText());
+						 'bookable'=>$cor->isValid(),'showAnualText'=>$cor->showAnualText(),'showStartedCourseText'=>$cor->showStartedCourseText(),
+						 'showFullyBookedText'=>$cor->showFullyBookedText(),'showStatusCancelledText'=>$cor->showStatusCancelledText());
             $jsarr[$c++] = $arr;
         }
 
