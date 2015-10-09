@@ -13,8 +13,9 @@ class Course{
     protected $extID;
     protected $type;
     protected $fullyBooked;
-		protected $status;
-    public function __construct($t=null,$c=null,$sd=null,$fd=null,$ve=null,$pr=null,$oap=null,$des=null,$id=null, $ext=null,$tpe=null,$fb=null,$sta=null){
+    protected $status;
+    public function __construct($t=null,$c=null,$sd=null,$fd=null,$ve=null,$pr=null,$oap=null,
+    $des=null,$id=null, $ext=null,$tpe=null,$fb=null,$sta=null){
         $this->title = $t;
         $this->code = $c;
         $this->startDate = $sd;
@@ -94,13 +95,13 @@ class Course{
         
     }
 	public function showAnualText(){
-		return $this->type === 'Annual Course' && $this->status ==='Active';
+		return $this->type === 'Annual Course' && $this->status !='Cancelled';
 	}
 	public function showStartedCourseText(){
 		$today = new DateTime();
         $today->sub(new DateInterval('P2D'));
         $sd = new DateTime($this->startDate);
-        if($sd < $today && $this->type !== 'Annual Course' && $this->status ==='Active')
+        if($sd < $today && $this->type !== 'Annual Course' && $this->status !='Cancelled')
             return true;
         
         return false;
