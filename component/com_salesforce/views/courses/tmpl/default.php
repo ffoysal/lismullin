@@ -51,7 +51,7 @@ defined('_JEXEC') or die('Restricted access');
             			<span ng-show="sortType == 'price'  && sortReverse" class="fa fa-caret-up"></span>
           				</a>
 					</th>				
-					<th ></th>				
+					<th class="notclick">Status</th>				
 				</tr>
 			</thead>
 			<tbody>				
@@ -67,10 +67,10 @@ defined('_JEXEC') or die('Restricted access');
 				  </td>
 				  <td nowrap>
 					<a ng-show="{{cor.bookable}}" href="index.php?option=com_salesforce&view=sfbooking&courseid={{cor.Id}}" ng-click="showBooking=true;showList=false;">{{cor.book}}</a>
-					<span ng-show="{{cor.showStartedCourseText}}">Not Available</span>  <i ng-show='{{ cor.showStartedCourseText}}' class="fa fa-info-circle anual-info" title='This Course/Seminar has already started. You cannot make a booking on line. Please contact the Lismullin Office.'></i>
-					<span ng-show="{{cor.showAnualText}}">Not Available</span>  <i ng-show='{{cor.showAnualText}}' class="fa fa-info-circle" title='Please contact the Lismullin Office to book a place for this course.'></i>
-<span ng-show="{{cor.showFullyBookedText}}">Not Available</span>  <i ng-show='{{cor.showFullyBookedText}}' class="fa fa-info-circle fully-booked-info" title='This course is now fully booked. Please contact the Lismullin Office for further information.'></i>
-<span ng-show="{{cor.showStatusCancelledText}}">Not Available</span>  <i ng-show='{{cor.showStatusCancelledText}}' class="fa fa-info-circle status-cancelled-info" title='This course has been cancelled. Please contact the Lismullin Office for more information.'></i>
+					<span ng-show="{{cor.showStartedCourseText}}">Started</span>  <i ng-show='{{ cor.showStartedCourseText}}' class="fa fa-info-circle anual-info" title='This Course/Seminar has already started. You cannot make a booking on line. Please contact the Lismullin Office.'></i>
+					<span ng-show="{{cor.showAnualText}}">Contact Office</span>  <i ng-show='{{cor.showAnualText}}' class="fa fa-info-circle" title='Please contact the Lismullin Office to book a place for this course.'></i>
+<span ng-show="{{cor.showFullyBookedText}}">Full</span>  <i ng-show='{{cor.showFullyBookedText}}' class="fa fa-info-circle fully-booked-info" title='This course is now fully booked. Please contact the Lismullin Office for further information.'></i>
+<span ng-show="{{cor.showStatusCancelledText}}">Cancelled</span>  <i ng-show='{{cor.showStatusCancelledText}}' class="fa fa-info-circle status-cancelled-info" title='This course has been cancelled. Please contact the Lismullin Office for more information.'></i>
 				</td>
 			  </tr>				
 			</tbody>
