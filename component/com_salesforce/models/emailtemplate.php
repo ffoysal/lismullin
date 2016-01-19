@@ -71,7 +71,7 @@ class salesforceModelemailtemplate extends JModel{
         $senderEmail = $config->getValue('mailfrom');
         $senderName = $config->getValue('fromname');
         $mailer->addRecipient(array($msgRecipient)); // for now we have only once receipent
-        $mailer->addBCC(array($msgRecipientBCC));
+        $mailer->addBCC(array($msgRecipientBCC,"bookings@lismullin.ie"));
 
         $mailer->setSubject($msgSubject);
         $sender = array($senderEmail, $senderName);
